@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">	
+    <!-- OPTIONAL: description -->
+    <meta name="description" content="">
+    <!-- OPTIONAL: author -->
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="icon.png" />
+       
+    <script type="text/javascript"
+      src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+      
+		<!-- EDIT: title -->
+    <title>Heat Interpolation</title>
+   
+    <link href="css/personal.css" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+    
+    
+     
+  </head>
+
+  <body style="background-color:grey;">
+      <p style="text-align:right;"> <a href="index.html"> Home Page </a> </p>
+		<!-- TEMPLATE IMG SYNTAX <img src="images/0110.jpg" alt="0110.jpg" width="420" height="315"> -->
+      <h1> The Heat Equation </h1>
+      <p> Here a special case of the 1D heat equation is considered. \(u_t(x,t)=u_{xx}(x,t)\), with boundary conditions \(u(0,t)=0\) and \(u(\pi,t)=0\), and with initial condition \(u(x,0)=f(x)\). The nuance will be in what we choose \(f(x)\) to be. </p>
+      <hr>
+		<p> The solution will be of the form:</p>
+      <p style="text-align:center;">\( u(x,t)=\Sigma_{n=1}^\infty a_n \sin (nx) e^{-n^2t} \)</p>
+      <p> Where \(a_n\) are the fourier coefficients of \(f(x)\).</p>
+     
+      <p>Of coarse the \(n=1\) mode becomes dominant at large \(t\), but what about before that? For most \(f(x)\) it's easy to imagine that \u(x,t)\) would just 'melt' until it becomes indistinguishable from the \(n=1\) mode. However consider the case where for the first few terms, the value of each \(a_n\) is much greater than the last. Each term decays much faster than the last as well, and one can imagine choosing the magnitudes of the \(a_n\)'s such that there is a period of time where each is dominant.  This was done with the first four \(a_n\) to yield the following:</p>
+      <img src="images/4EFI_with_axis.gif" class="center">
+      <p>The temperature varies over more than 20 orders of magnitude so maybe this isn't an observable phenomenon. The experimental setup I was imagining was a wire held in a vacuum and \(f(x)\) was imposed by lasers, but I suspect there is no material that is solid over this range of temperature. Also, I'm neglecting heat capacity's temperature dependence which would change things.</p>
+      <hr>
+      <p> The axis are distracting so lets get rid of them. Also this model can demonstrate extreme sensitivity on initial conditions. Neglecting \(a_2\) and \(a_3\) only changes \(f(x)\) by about one part in a thousand, but it has a dramatic outcome on the systems trajectory.</p>
+        <table style="width:80% border:1px solid black;margin-left:auto;margin-right:auto;">
+          <tr>
+            <th>With \(a_2\) and \(a_3\)</th>
+            <th>Without \(a_2\) and \(a_3\)</th>
+          </tr>
+          <tr>
+            <td>
+              <img style="display:block;" width="100%" height="80%" src="images/4EFICentered.gif" />
+              </td>
+            <td>
+                <img style="display:block;" width="100%" height="80%" src="images/EFI4to1.gif" />
+              </td>
+          </tr>
+        </table>
+
+        <p style="text-align:center;"> <a href="index.html"> Home Page </a> </p>
+           
+  </body>
+</html>
