@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- MathJax -->    
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+      
+		<!-- EDIT: title -->
+    <title>Cyclic Permutation Fractals</title>
+    <p style="text-align:right;"> <a href="index.html"> Home Page </a> </p>
+  </head>
+
+  <body style="background-color:grey;">
+
+      <h1> Cyclic Permutation Fractals </h1>
+
+
+
+					<h4>Introduction</h4>   
+                    <p> The algorithm that creates these fractals is similar to the one described <a href=OCD.html >here</a>. This algorithm takes as input a zeromap, so called because it is what 0 will map to. The zeromap should be a sequence of integers from 0 to n-1, where n is the length of the sequence. The map for some other integer, k, is mod(zeromap+k,n). Using these maps, we can recursively expand the zeromap; notice that the sequence will lengthen by a factor of n after each iteration. Let the number of times the sequence has been expanded be m. In the limit of as m approaches infinity, each digit in the sequence corresponds to a point in the fractal; the horizontal position of each point is determined by their index. To make a fractal from this sequence, we also need to compute a verticle position for each point. At first, each point begins on the horizontal axis. After each expansion, each point is moved up by \(k*n^{-m}\), and the verticle positions of points are inherited from the point that mapped to them in the previous sequence. </p>
+        <table style="width:100% border:5px solid black;margin-left:auto;margin-right:auto;">
+          <tr>
+            <th><p>zeromap=23132</p></th>
+            <th><p>zeromap=201</p></th>  
+          </tr>
+          <tr>
+            <td>
+              <img style="display:block;" width="100%" src="images/CP_23132.png" />
+              </td>
+            <td>
+                <img style="display:block;" width="100%" src="images/CP_201.png" />
+              </td>
+          </tr>
+          <tr>
+            <th><p>zeromap=010</p></th>
+            <th><p>zeromap=0123</p></th>  
+          </tr>
+          <tr>
+            <td>
+              <img style="display:block;" width="100%" src="images/CP_010.png" />
+              </td>
+            <td>
+                <img style="display:block;" width="100%" src="images/CP_0123.png" />
+              </td>
+          </tr>
+          <tr>
+            <th><p>zeromap=03214</p></th>
+            <th><p>zeromap=33233</p></th>  
+          </tr>
+          <tr>
+            <td>
+              <img style="display:block;" width="100%" src="images/CP_03214.png" />
+              </td>
+            <td>
+                <img style="display:block;" width="100%" src="images/CP_33233.png" />
+              </td>
+          </tr>
+          <tr>
+            <th><p>zeromap=0523250</p></th>
+            <th><p>zeromap=6024206</p></th>  
+          </tr>
+          <tr>
+            <td>
+              <img style="display:block;" width="100%" src="images/CP_0523250.png" />
+              </td>
+            <td>
+                <img style="display:block;" width="100%" src="images/CP_6024206.png" />
+              </td>
+          </tr>
+          </table>
+      
+        <p style="text-align:center;"> <a href="index.html"> Home Page </a> </p>
+        <p style="text-align:center;"> Last Updated: 5/21/2020 </p>          
+  </body>
+</html>
