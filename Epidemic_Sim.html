@@ -1,38 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">	
-    <!-- OPTIONAL: description -->
-    <meta name="description" content="">
-    <!-- OPTIONAL: author -->
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="icon.png" />
-
+    
+    <!-- MathJax -->
     <script type="text/javascript" id="MathJax-script" async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
     </script>
-    <!--<script type="text/javascript"
-      src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script> -->
-      
+          
 		<!-- EDIT: title -->
     <title>Epidemic Simulation</title>
     <p style="text-align:right;"> <a href="index.html"> Home Page </a> </p>
    
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-    
-     
   </head>
 
   <body style="background-color:grey;">
 		<!-- TEMPLATE IMG SYNTAX <img src="images/0110.jpg" alt="0110.jpg" width="420" height="315"> -->
       <h1> Epidemic Simulation </h1>
-
      
-		<p> This simulation was created on March 30 and 31 of 2020, during the onset of the COVID induced shutdowns in America. This simulation models how an infectious disease spreads through a population and demonstrates the kind of impact social distancing practices can have. Though the parameters of this simulation were chosen to resemble COVID, by no means is this to be interpreted as a prediction. Many of the parameters chosen were taken from this <a href=https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-NPI-modelling-16-03-2020.pdf>paper</a>. It's from March 16, and there's been a lot more COVID data released since then so it's likely that the parameters chosen really no longer resemble our understanding of COVID. In the plots below, blue is healthy, red is infected, and black is recovered and dead. The top graphs shows the state of the population as a function of time. The bottom gifs are maps of the population where each dot represents an individual. </p>
+		<p> This simulation was created on March 30 and 31 of 2020, during the onset of the COVID-induced shutdowns in America. This simulation models how an infectious disease spreads through a population and demonstrates the kind of impact social distancing practices can have. Though the parameters of this simulation were chosen to resemble COVID, by no means is this to be interpreted as a prediction. Many of the parameters chosen were taken from this <a href=https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-NPI-modelling-16-03-2020.pdf>paper</a>. It is from March 16, and there has been a lot more COVID data released since then so it is likely that the parameters chosen really no longer resemble our understanding of COVID. In the plots below, blue is healthy, red is infected, and black is recovered and dead. The top graphs shows the state of the population as a function of time. The bottom gifs are maps of the population where each dot represents an individual. </p>
       <hr>
       <table style="width:80% border:1px solid black;margin-left:auto;margin-right:auto;">
           <tr>
@@ -62,17 +47,17 @@
         </table>
    
       <p>
-          The source code is <a href=https://github.com/GageSiebert/EpidemicModel>here</a>, it's the most user friendly code I have written to date. There are many easily togglable variables: population size, if social distancing happens, how many people need to be sick for social distancing to start, by what factor does social distancing reduce the propability of infection for an individual, how long are people sick, how long does it take to go from being infected to being contagious, what is the healthcare systems capacity, what is the mortality rate with and without medical care, and of course how infectious is the disease. The population is distributed uniformly over a square area whose size is determined such that the population density is constant. The probability of an individual infecting another individual on a given day is 
+          The source code is <a href=https://github.com/GageSiebert/EpidemicModel>here</a>-- it is the most user friendly code I have written to date. There are many easily togglable variables: population size, if social distancing happens, how many people need to be sick for social distancing to start, by what factor does social distancing reduce the propability of infection for an individual, how long are people sick, how long does it take to go from being infected to being contagious, what is the healthcare system's capacity, what is the mortality rate with and without medical care, and how infectious is the disease. The population is distributed uniformly over a square area whose size is determined such that the population density is constant. The probability of an individual infecting another individual on a given day is 
       </p>
       <p style="text-align:center;">\(\frac{f_{SD}}{\pi}\arctan{f_s r^{-2}}\).</p>
       <p>
-         Where \(f_{SD}\) is the factor by which practicing social distancing reduces infection chance, \(f_s\) is the constant that scales how infectious the disease is, and \(r\) is the distance between the two individuals. There is no evidence for this function, I just though it was reasonable for infection chance to go as \(r^{-2}\) and \(\tan\) is being used to map \([0,1]\) to \([0,\infty]\). 
+         \(f_{SD}\) is the factor by which practicing social distancing reduces infection chance, and \(f_s\) is the constant that scales how infectious the disease is. \(r\) is the distance between the two individuals. There is no evidence for this function, I just though it was reasonable for infection chance to go as \(r^{-2}\) and \(\tan\) is being used to map \([0,1]\) to \([0,\infty]\). 
       </p>    
       <p>    
-          Practicing social distancing leads to a lower mortality rate for two reasons. One is that the number of individuals who are never infected is higher when practicing social distancing. The other reason is that when the medical system is overwhelmed, as happens when not practicing social distancing, the effective mortality rate increases.
+          Practicing social distancing leads to a lower mortality rate for two reasons: one is that the number of individuals who are never infected is higher when practicing social distancing, and the other reason is that when the medical system is overwhelmed, as happens when not practicing social distancing, the effective mortality rate increases.
       </p>
       
         <p style="text-align:center;"> <a href="index.html"> Home Page </a> </p>
-           
+        <p style="text-align:center;"> Last Updated: 5/21/2020 </p>
   </body>
 </html>

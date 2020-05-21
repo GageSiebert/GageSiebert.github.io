@@ -1,16 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">	
-    <!-- OPTIONAL: description -->
-    <meta name="description" content="">
-    <!-- OPTIONAL: author -->
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="icon.png" />
 
-    
+    <!-- MathJax -->    
     <script type="text/javascript" id="MathJax-script" async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
     </script>
@@ -18,18 +10,6 @@
 		<!-- EDIT: title -->
     <title>Binary Fractals</title>
     <p style="text-align:right;"> <a href="index.html"> Home Page </a> </p>
-   
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-    
-
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
-     
   </head>
 
   <body style="background-color:grey;">
@@ -40,11 +20,11 @@
 
 					<h4>Motivation</h4>
 
-					<p>When I was little, I used to tap out a pattern with my index (0) and middle (1) fingers: 0110100110010110100101100110100110010110011010010110100110010110 etc. It's hard to see the pattern here, this is not a good way to visualize it.</p>
+					<p>When I was little, I used to tap out a pattern with my index (0) and middle (1) fingers: 0110100110010110100101100110100110010110011010010110100110010110 etc. It's hard to see the pattern here; this is not a good way to visualize it.</p>
 
                     <p> This is: </p>
 					<img src="images/0110.jpg" alt="0110.jpg" width="420" height="315">
-                    <p> It's a fractal. Pretty right? Let's see how they're connected... </p>
+                    <p> It's a fractal. Pretty, right? Let's see how they're connected... </p>
 
 
       
@@ -59,11 +39,11 @@
 
                     <p> Here's how young me visualized it:</p>
 						<img src="images/arrow_visualization.png" alt="arrow_visualization.png" width="600" height="300">
-						<p> I saw each finger as representing an arrow, one up and one down. The first four would go up, down, down, up and the down arrows would be above the up ones. If you squint really hard at these first four arrows, they kind of look like one big up arrow. That's how I interpreted them and I then made the next up, down, down, up, except each arrow was really four little ones, with the big down arrows being made from down, up, up, down. So 0 1 1 0 = 0110 1001 1001 0110. This process can go on forever; everytime you finish the four arrows, you just go up to the next size level and repeat.  </p>
+						<p> I saw each finger as representing an arrow, one up and one down. The first four would go up, down, down, up and the "down" arrows would be above the "up" ones. If you squint really hard at these first four arrows, they kind of look like one big up arrow. That's how I interpreted them. I then made the next up, down, down, up, except each arrow was really four little ones, with the big down arrows being made from down, up, up, down. So 0 1 1 0 = 0110 1001 1001 0110. This process can go on forever; everytime you finish the four arrows, you just go up to the next size level and repeat.  </p>
 					
 
 					<p>
-					As a brief aside, this binary sequence (0110 1001 1001 0110 1001 etc.) is called the <a href="https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence">Thue-Morse sequence</a> and it can be attained by starting with zero and appending the opposite of the sequence to the end. For example to 0 add 1, to 01 add 10, to 0110 add 1001, etc. This produces the same sequence with a profoundly different algorithm!
+					As a brief aside, this binary sequence (0110 1001 1001 0110 1001 etc.) is called the <a href="https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence">Thue-Morse sequence</a> and it can be attained by starting with zero and appending the opposite of the sequence to the end. For example, to 0 add 1, to 01 add 10, to 0110 add 1001, etc. This produces the same sequence with a profoundly different algorithm!
 					</p>
 
 	
@@ -73,18 +53,18 @@
 					<h4>Making the Fractals</h4>
 
                     <img src="images/0110.gif" alt="0110.gif" width="420" height="315">
-                    <p>When trying to write an algorithm that turns this sequence into fractals, a different approach is preferable. Let's work level by level, by levels I mean when we have \(4^n\) points, ex: n=0 is 1, n=1 is 0110, n=2 is 0110 1001 1001 0110, etc. To move towards larger layers, we map each number in our input layer to a sequence on 4 numbers in the next layer. 1 maps to 0110 and 0 maps to 1001. We can also think of n as the number of times we have executed the expansion algorithm. To make the fractal from this sequence, we plot a point for every number in the sequence. The horizontal position of the points are determined by the index of thier number i.e. the nth point is at x=n. The verticle positions change as we go and when a number maps to the next layer, it's daughter numbers inherit it's verticle position. To make fractals, the scale has to be uniform on all scales so this determines how the verticle positions will move. Upon computing the nth layer, we will move every '1' number's verticle position up by \(4^{-n}\). This will preserve the scale invariance necessary to make the object a fractal. Do this process about 10 times, and the output plot is the one seen above, in the picture and gif. 
+                    <p>When trying to write an algorithm that turns this sequence into fractals, a different approach is preferable. Let's work level by level, by levels I mean when we have \(4^n\) points, ex: n=0 is 1, n=1 is 0110, n=2 is 0110 1001 1001 0110, etc. To move towards larger layers, we map each number in our input layer to a sequence on 4 numbers in the next layer. 1 maps to 0110 and 0 maps to 1001. We can also think of n as the number of times we have executed the expansion algorithm. To make the fractal from this sequence, we plot a point for every number in the sequence. The horizontal position of the points are determined by the index of thier number, i.e. the nth point is at x=n. The vertical positions change as we go, and when a number maps to the next layer, its daughter numbers inherit its vertical position. To make fractals, we must hve scale invariance, as this determines how the vertical positions will move. Upon computing the nth layer, we will move every '1' number's vertical position up by \(4^{-n}\). This will preserve the scale invariance necessary to make the object a fractal. Do this process about 10 times, and the output plot is the one seen above, in the picture and gif. 
 					</p>
 
 					<p>
-					It turns out that this algorithm can be generalized. We chose 0110 to be what 1 maps to, but we could have chosen anything. Let's call the binary sequence that one maps to the 'one map'. So for any given one map, zero will map to the inverse. We also need to change the scaling to keep the shape equivalent at all scales. For a one map that is m digits long, the verticle distance we move 1's up by each iteration is \(m^{n}\), where n is the layer. MATLAB code that executes this algorithm can be found <a href="https://github.com/GageSiebert/BinaryFractals">here</a>. Here's some examples of the output... 
+					It turns out that this algorithm can be generalized. We chose 0110 to be what 1 maps to, but we could have chosen anything. Let's call the binary sequence to which one maps: 'one map'. So for any given one map, zero will map to the inverse. We also need to change the scaling to keep the shape equivalent at all scales. For a one map that is m digits long, the vertical distance we move 1's up by each iteration is \(m^{n}\), where n is the layer. MATLAB code that executes this algorithm can be found <a href="https://github.com/GageSiebert/BinaryFractals">here</a>. Here's some examples of the output... 
 					</p>
                     <img src="images/01.jpg" alt="01.jpg" width="420" height="315">
                     <img src="images/010.jpg" alt="010.jpg" width="420" height="315">
                     <img src="images/101.jpg" alt="101.jpg" width="420" height="315">
                     <img src="images/1110.jpg" alt="1110.jpg" width="420" height="315">
                     <p> 
-                        Their one maps are: top left=01, top right=010, bottom left=101, bottom right=1110. As the one maps get longer they all start to look quite similar. The top left (one map=01) fractal is actually featured in a <a href="https://arxiv.org/pdf/nlin/0510032.pdf">paper</a>. After staring at these fractals for awhile, you might notice that you can quickly tell what the one map is by simply looking at the fractal. Try to identify these two:
+                        Their one maps are: top left=01, top right=010, bottom left=101, bottom right=1110. As the one maps get longer, they all start to look quite similar. The top left (one map=01) fractal is actually featured in a <a href="https://arxiv.org/pdf/nlin/0510032.pdf">paper</a>. After staring at these fractals for awhile, you might notice that you can quickly tell what the one map is by simply looking at the fractal. Try to identify these two:
                     </p>
                     <img src="images/01010.jpg" alt="01010.jpg" width="420" height="315">
                     <img src="images/00110.jpg" alt="00110.jpg" width="420" height="315">
