@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fractal Generator</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script>
+    <script src="js/2DIFSSlotMachine.js"></script> <!-- This loads my IFS fxns-->
+</head>
+<body>
+    <div>
+        <label for="points">Number of points:</label>
+        <input type="range" id="points" name="points" min="1000" max="100000">
+        <span id="pointsValue"></span>
+    </div>
+    <div>
+        <label for="Nmaps">Number of maps:</label>
+        <input type="range" id="Nmaps" name="Nmaps" min="3" max="10">
+        <span id="NmapsValue"></span>
+    </div>
+    <div>
+        <button id="generate">Generate Points</button>
+    </div>
+    <div>
+        <svg width="500" height="500"></svg>
+    </div>
+    <script>
+        var svg = d3.select("svg"),
+            width = +svg.attr("width"),
+            height = +svg.attr("height");
+
+        function drawPoints(points) {
+        svg.selectAll(".dot").remove();
+
+        svg.selectAll(".dot")
+            .data(points)
+            .enter().append("circle")
+            .attr("class", "dot")
+            .attr("r", 1.0)
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; })
+            .style("fill", function(d) { return d.color; });
+        }
+
+        var pointsSlider = document.getElementById("points");
+        var pointsValueSpan = document.getElementById("pointsValue");
+        pointsValueSpan.innerText = pointsSlider.value; // Display the default slider value
+
+        var NmapsSlider = document.getElementById("Nmaps");
+        var NmapsValueSpan = document.getElementById("NmapsValue");
+        NmapsValueSpan.innerText = NmapsSlider.value; // Display the default slider value
+
+        // Update the current slider value (each time you drag the slider handle)
+        pointsSlider.oninput = function() {
+            pointsValueSpan.innerText = this.value;
+        }
+
+        NmapsSlider.oninput = function() {
+            NmapsValueSpan.innerText = this.value;
+        } 
+
+        document.getElementById("generate").addEventListener("click", function() {
+             var points = generateIFSPoints(pointsSlider.value,NmapsSlider.value);
+             drawPoints(points);
+        });
+    </script>
+</body>
+</html>
