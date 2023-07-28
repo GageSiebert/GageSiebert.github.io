@@ -65,13 +65,11 @@ function generateIFSPoints(Npts,Nmaps,mu,sigma,Wsigma) {
             vector: [Math.random(), Math.random()]
         });
         weights.push(BoxMuller(0.5,Wsigma));
-        //console.log(maps[i].vector)
     }
     var pts = []; 
     pts.push({
         x: [Math.random(), Math.random()] // This is the initial point
     }); 
-    //console.log(pts[0].x);
     for (var i = 0; i < Npts; i++) {
         map = weightedRandomChoice(maps, weights);
         pts.push({
@@ -79,7 +77,6 @@ function generateIFSPoints(Npts,Nmaps,mu,sigma,Wsigma) {
         });    
 
     }
-    //console.log(pts[0].x);
     // Normalize the points
     let maxVal = Number.NEGATIVE_INFINITY;
     let minVal = Number.POSITIVE_INFINITY;
@@ -101,7 +98,6 @@ function generateIFSPoints(Npts,Nmaps,mu,sigma,Wsigma) {
             pts[i].x[j] /= maxVal-minVal;
         }
     }
-    //console.log(pts[0].x);
     var points = [] // This array will be converted to the RRGGBB hex format
     for (var i = 0; i < Npts; i++) {
         points.push({
