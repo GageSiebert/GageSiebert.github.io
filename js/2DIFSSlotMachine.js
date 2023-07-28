@@ -1,5 +1,4 @@
 
-
 function rot_matrix2D(theta) {
     return nj.array([
         [Math.cos(theta), -Math.sin(theta)],
@@ -7,23 +6,21 @@ function rot_matrix2D(theta) {
     ]);
 }
 
-function rot_matrix3D(theta, phi, psi) {
-    const thetaMat = nj.array([
-        [Math.cos(theta), -Math.sin(theta), 0],
-        [Math.sin(theta), Math.cos(theta), 0],
-        [0, 0, 1]
-    ]);
-    const phiMat = nj.array([
-        [Math.cos(phi), 0, -Math.sin(phi)],
-        [0, 1, 0],
-        [Math.sin(phi), 0, Math.cos(phi)]
-    ]);
-    const psiMat = nj.array([
-        [1, 0, 0],
-        [0, Math.cos(psi), -Math.sin(psi)],
-        [0, Math.sin(psi), Math.cos(psi)]
-    ]);
-    return nj.dot(nj.dot(thetaMat, phiMat), psiMat);
+//This function gives a random number with a normal distribution
+function BoxMuller(mu, sigma) {
+    let u1 = Math.random();
+    let u2 = Math.random();
+    return (Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2) * sigma + mu) % 1; // Mod 1 to keep it in the unit interval
+}
+
+// This gives a random 2D contraction matrix
+function randomContractionMatrix2D(mu,sigma) {
+    let theta = Math.random() * 2 * Math.PI;
+    temp = nj.array([
+        [BoxMuller(mu,sigma) * (2 * (Math.random() > 0.5) - 1), 0],
+        [0, BoxMuller(mu,sigma) * (2 * (Math.random() > 0.5) - 1)]
+        ]); // Normally distributed eigenvalues with random signs
+        return nj.dot(rot_matrix2D(theta), temp) 
 }
 
 function rgbToHex(rgb) {
@@ -40,48 +37,6 @@ function rgbToHex(rgb) {
         return hex;
     }).join('');
 }
-    
-/*function randomContractionMatrix(n) {
-    // Initialize matrix with random values between -1 and 1
-    let matrix = Array.from({length: n}, () => 
-        Array.from({length: n}, () => 2*Math.random() - 1)
-    );
-
-    // Calculate determinant using numeric.js library
-    let det = numeric.det(matrix);
-    //console.log(det)
-    // Check if determinant is within the desired range
-    while (det <= -1 || det >= 1) {
-        // Adjust matrix values to bring determinant within range
-        matrix = matrix.map(row => row.map(value => value / 2));
-        det = numeric.det(matrix);
-        //console.log(det)
-    }
-    //console.log(matrix);
-    return matrix;
-}*/
-
-// This is leaky... Maps aren't contracting as much as I expect
-function randomContractionMatrix(n) {
-    // Initialize matrix with random values between -1 and 1
-    let matrix = Array.from({length: n}, () => 
-        Array.from({length: n}, () => 2*Math.random() - 1)
-    );
-
-    // Calculate eigenvalues using numeric.js library
-    let eigenvalues = numeric.eig(matrix).lambda.x;
-
-    // Find the largest eigenvalue in absolute value
-    let maxEigenvalue = Math.max(...eigenvalues.map(x => Math.abs(x)));
-
-    // If the largest eigenvalue is greater than 1, scale down the matrix
-    if (maxEigenvalue > 1) {
-        matrix = matrix.map(row => row.map(value => value / (maxEigenvalue + 0.1)));
-    }
-
-    return matrix;
-}
-
 
 function weightedRandomChoice(items, weights) {
     let totalWeight = 0;
@@ -100,16 +55,16 @@ function weightedRandomChoice(items, weights) {
     }
 }
 
-function generateIFSPoints(Npts,Nmaps) {
+function generateIFSPoints(Npts,Nmaps,mu,sigma,Wsigma) {
     var map
     var maps = [];
     var weights = [];
     for (var i = 0; i < Nmaps; i++) {
         maps.push({
-            matrix: randomContractionMatrix(2),
+            matrix: randomContractionMatrix2D(mu,sigma),
             vector: [Math.random(), Math.random()]
         });
-        weights.push(Math.random());
+        weights.push(BoxMuller(0.5,Wsigma));
         //console.log(maps[i].vector)
     }
     var pts = []; 

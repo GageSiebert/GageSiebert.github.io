@@ -5,25 +5,66 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script>
-    <script src="js/2DIFSSlotMachine.js"></script> <!-- This loads my IFS fxns-->
+    <link href="css/IFSGenerators.css" rel="stylesheet">
 </head>
 <body>
-    <div>
-        <label for="points">Number of points:</label>
-        <input type="range" id="points" name="points" min="1000" max="100000">
+    <div id="svgContainer" style="text-align: center;"></div>
+    <script>
+        let npixels = Math.round(0.8 * Math.min(document.documentElement.clientWidth, document.documentElement.clientHeight));
+        document.getElementById('svgContainer').innerHTML = `<svg width="${npixels}" height="${npixels}"></svg>`;
+    </script>
+    <div style="text-align: center;">
+        <button id="generate">Generate</button>
+    </div>
+    <div style="text-align: center;">
+        <label for="points">Log10(Number of Points):</label>
+        <input type="range" id="points" name="points" min="0" max="100" value="0">
         <span id="pointsValue"></span>
     </div>
-    <div>
-        <label for="Nmaps">Number of maps:</label>
-        <input type="range" id="Nmaps" name="Nmaps" min="3" max="10">
+    <div style="text-align: center;">
+        <label for="Nmaps">Number of Maps:</label>
+        <input type="range" id="Nmaps" name="Nmaps" min="3" max="10" value="3">
         <span id="NmapsValue"></span>
     </div>
-    <div>
-        <button id="generate">Generate Points</button>
+    <div style="text-align: center;">
+        <label for="mu">Eigenvalue Mean:</label>
+        <input type="range" id="mu" name="mu" min="0" max="100" value="50">
+        <span id="muValue"></span>
     </div>
-    <div>
-        <svg width="500" height="500"></svg>
+    <div style="text-align: center;">
+        <label for="sigma">Eigenvalue Std:</label>
+        <input type="range" id="sigma" name="sigma" min="1" max="100" value="1">
+        <span id="sigmaValue"></span>
     </div>
+    <div style="text-align: center;">
+        <label for="Wsigma">Weight Std:</label>
+        <input type="range" id="Wsigma" name="Wsigma" min="1" max="100" value="1">
+        <span id="WsigmaValue"></span>
+    </div>
+    <div style="text-align: center;">
+        <label for="Spixel">Pixel Size:</label>
+        <input type="range" id="Spixel" name="Spixel" min="1" max="100" value="50">
+        <span id="SpixelValue"></span>
+    </div>
+
+    <p style="text-align: center;">
+        This is a random IFS fractal generator. IFSs are fractals generated recursively by mapping themselves into themselves.
+        Above you can select many parameters to control the generator. You can select the number of points to be plotted and their size in pixels.
+        The time to calculate depends strongly on the number of points.
+        You choose how many random maps to generate; the fewer maps, the more simple the fractal will be.
+        The eigenvalues of the maps control the `strenght' of the contraction. 
+        Smaller mean eigenvalues give tighter maps.
+        Larger `Eigenvalue Std' gives more variation in the contraction.
+        The weights control the relative probability of each map being applied. A relatively small weight will result in a map that looks faded.
+        Larger `Weight Std' gives more variation in the weights.
+
+        If you are consistenly getting amorphous blobs, try decreasing both eigenvalue sliders.
+        If you are consistenly getting a single point, try increasing both eigenvalue sliders.    
+
+    </p>
+
+
+    <script src="js/2DIFSSlotMachine.js"></script> <!-- This loads my IFS fxns-->
     <script>
         var svg = d3.select("svg"),
             width = +svg.attr("width"),
@@ -36,33 +77,67 @@
             .data(points)
             .enter().append("circle")
             .attr("class", "dot")
-            .attr("r", 1.0)
+            .attr("r", SpixelSlider.value/100)
             .attr("cx", function(d) { return d.x; })
             .attr("cy", function(d) { return d.y; })
             .style("fill", function(d) { return d.color; });
         }
 
-        var pointsSlider = document.getElementById("points");
-        var pointsValueSpan = document.getElementById("pointsValue");
-        pointsValueSpan.innerText = pointsSlider.value; // Display the default slider value
+        let pointsSlider = document.getElementById("points");
+        let pointsValueSpan = document.getElementById("pointsValue");
+        pointsValueSpan.innerText = 4 + pointsSlider.value/50; // Display the default slider value
 
-        var NmapsSlider = document.getElementById("Nmaps");
-        var NmapsValueSpan = document.getElementById("NmapsValue");
+        let NmapsSlider = document.getElementById("Nmaps");
+        let NmapsValueSpan = document.getElementById("NmapsValue");
         NmapsValueSpan.innerText = NmapsSlider.value; // Display the default slider value
 
-        // Update the current slider value (each time you drag the slider handle)
-        pointsSlider.oninput = function() {
-            pointsValueSpan.innerText = this.value;
-        }
+        let muSlider = document.getElementById("mu");
+        let muValueSpan = document.getElementById("muValue");
+        muValueSpan.innerText = muSlider.value/100; // Display the default slider value
 
-        NmapsSlider.oninput = function() {
+        let sigmaSlider = document.getElementById("sigma");
+        let sigmaValueSpan = document.getElementById("sigmaValue");
+        sigmaValueSpan.innerText = sigmaSlider.value/100; // Display the default slider value
+
+        let WsigmaSlider = document.getElementById("Wsigma");
+        let WsigmaValueSpan = document.getElementById("WsigmaValue");
+        WsigmaValueSpan.innerText = WsigmaSlider.value/100; // Display the default slider value
+
+        let SpixelSlider = document.getElementById("Spixel");
+        let SpixelValueSpan = document.getElementById("SpixelValue");
+        SpixelValueSpan.innerText = SpixelSlider.value/100; // Display the default slider value
+
+        // Update the current slider value (each time you drag the slider handle)
+        pointsSlider.addEventListener('input', function() {
+            pointsValueSpan.innerText = 4 + this.value/50;
+        });
+
+        NmapsSlider.addEventListener('input', function() {
             NmapsValueSpan.innerText = this.value;
-        } 
+        }); 
+
+        muSlider.addEventListener('input', function() {
+            muValueSpan.innerText = this.value/100;
+        }); 
+
+        sigmaSlider.addEventListener('input', function() {
+            sigmaValueSpan.innerText = this.value/100;
+        }); 
+
+        WsigmaSlider.addEventListener('input', function() {
+            WsigmaValueSpan.innerText = this.value/100;
+        }); 
+
+        SpixelSlider.addEventListener('input', function() {
+            SpixelValueSpan.innerText = this.value/100;
+        }); 
 
         document.getElementById("generate").addEventListener("click", function() {
-             var points = generateIFSPoints(pointsSlider.value,NmapsSlider.value);
+             var points = generateIFSPoints(10**(4 + pointsSlider.value/50),NmapsSlider.value,muSlider.value/100,sigmaSlider.value/100,WsigmaSlider.value/100);
              drawPoints(points);
         });
     </script>
+    <p style="text-align:center;"> <a href="index.html"> Home Page </a> </p>
+    <p style="text-align:center;"> Last Updated: 7/27/2023 </p>
 </body>
 </html>
