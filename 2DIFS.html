@@ -18,7 +18,7 @@
     </div>
     <div style="text-align: center;">
         <label for="points">Log10(Number of Points):</label>
-        <input type="range" id="points" name="points" min="0" max="100" value="0">
+        <input type="range" id="points" name="points" min="0" max="100" value="10">
         <span id="pointsValue"></span>
     </div>
     <div style="text-align: center;">
@@ -52,7 +52,7 @@
         Above you can select many parameters to control the generator. You can select the number of points to be plotted and their size in pixels.
         The time to calculate depends strongly on the number of points.
         You choose how many random maps to generate; the fewer maps, the more simple the fractal will be.
-        The eigenvalues of the maps control the `strenght' of the contraction. 
+        The eigenvalues of the maps control the `strength' of the contraction. 
         Smaller mean eigenvalues give tighter maps.
         Larger `Eigenvalue Std' gives more variation in the contraction.
         The weights control the relative probability of each map being applied. A relatively small weight will result in a map that looks faded.
@@ -62,7 +62,7 @@
         If you are consistenly getting a single points or sharp lines, you can increase mean eigenvalue.    
 
     </p>
-
+    <p style="text-align: center; font-size:20px">Here is a link back to the color <a href=5DIFS.html >version</a>.</p>
 
     <script src="js/2DIFSSlotMachine.js"></script> <!-- This loads my IFS fxns-->
     <script>
