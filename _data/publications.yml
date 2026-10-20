@@ -1,22 +1,17 @@
 # Newest first. `selected: true` puts a paper on the home page.
 # `status` is shown as a tag when present (e.g. "in preparation", "under review").
 
-- title: Using Semantics to Select Reference Machines
-  authors: Siebert, G., Walker, S.
-  year: 2026
-  status: in preparation
-  selected: true
-
 - title: Assembly Spaces as a Basis for Physical Complexity
   authors: Siebert, G., Walker, S.
   year: 2026
   status: in preparation
 
-- title: "Assembly Spaces: Formal Definitions and Fast Methods for Approximating Assembly Indices"
+- title: "Assembly Spaces and Formal Grammars: a General Correspondence and Fast Bounds on Assembly Indices"
   authors: Siebert, G., Chowdhury, R., Slocombe, L., Walker, S.
   year: 2026
   venue: arXiv
   url: https://arxiv.org/abs/2606.15499
+  status: In Revision
   selected: true
 
 - title: Practical Assembly Theory, Including Protocols, and a Python Toolkit

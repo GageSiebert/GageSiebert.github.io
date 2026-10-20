@@ -1,24 +1,14 @@
-# Shown as cards on /projects/, in this order.
+# Shown as cards on /misc/, in this order.
 
 - title: Fractal Generator
   url: /5DIFS.html
   image: /images/5DIFS_title.png
   blurb: Generate random IFS fractals in the browser.
 
-- title: Fractal Gallery
-  url: /Fractal_Gallery.html
-  image: /images/FractalGallery/Title.png
-  blurb: Iterated function systems, Julia sets and diffusion-limited aggregation.
-
 - title: The Oracle's Fractals
   url: /files/The_Oracle_s_Fractals.pdf
   image: /images/Address_Fig.jpg
-  blurb: A fractal built by every computation.
-
-- title: Fractal Font
-  url: /Fractal_Font.html
-  image: /images/LOREM_IPSUM_word.jpg
-  blurb: Turn a string into an IFS fractal; notebook included.
+  blurb: Fractals containing every computation.
 
 - title: Short Fiction
   url: /ArchipelagoCosmology.html
@@ -29,3 +19,13 @@
   url: /Astro_photos.html
   image: /images/Moon_title.png
   blurb: Planets, the Moon and the Sun through an 8-inch Dobsonian.
+
+- title: Fractal Font
+  url: /Fractal_Font.html
+  image: /images/LOREM_IPSUM_word.jpg
+  blurb: Turn a string into an IFS fractal; notebook included.
+
+- title: Fractal Gallery
+  url: /Fractal_Gallery.html
+  image: /images/FractalGallery/Title.png
+  blurb: Iterated function systems, Julia sets and diffusion-limited aggregation.

@@ -3,7 +3,7 @@
     <a class="site-name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
     <ul>
       <li><a href="{{ '/research/' | relative_url }}"{% if page.url == '/research/' %} aria-current="page"{% endif %}>Research</a></li>
-      <li><a href="{{ '/projects/' | relative_url }}"{% if page.url == '/projects/' or page.project %} aria-current="page"{% endif %}>Projects</a></li>
+      <li><a href="{{ '/misc/' | relative_url }}"{% if page.url == '/misc/' or page.project %} aria-current="page"{% endif %}>Miscellaneous</a></li>
       <li><a href="{{ site.cv | relative_url }}">CV</a></li>
     </ul>
   </nav>
