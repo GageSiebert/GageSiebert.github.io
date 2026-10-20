@@ -1,0 +1,22 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+description: Fractals, astrophotography and short fiction by Gage Siebert.
+---
+<h1>Projects</h1>
+<p>Things I've made for fun: fractals, astrophotos and a short story.</p>
+
+<ul class="cards">
+  {% for project in site.data.projects %}
+  <li class="card">
+    <a href="{{ project.url | relative_url }}">
+      <img src="{{ project.image | relative_url }}" alt="" loading="lazy">
+      <div class="body">
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.blurb }}</p>
+      </div>
+    </a>
+  </li>
+  {% endfor %}
+</ul>

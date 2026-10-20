@@ -1,0 +1,227 @@
+/* Color tokens. The accent is the blue of the IFS renders in the Fractal Gallery. */
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #5d636b;
+  --rule: #e3e1dc;
+  --accent: #0a69a8;
+  --accent-soft: #e6f0f8;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --measure: 42rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15171a;
+    --surface: #1d2024;
+    --text: #e6e6e3;
+    --muted: #a0a6ad;
+    --rule: #33373d;
+    --accent: #6fb4e8;
+    --accent-soft: #1d2b38;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+main, .site-header nav, .site-footer {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+main { padding-top: 2rem; padding-bottom: 3rem; }
+main.wide { max-width: 64rem; }
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 2rem 0 0.75rem;
+}
+h1 { font-size: 2.1rem; margin-top: 0.5rem; }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1.05rem; }
+
+p { margin: 0 0 1rem; }
+
+a { color: var(--accent); text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
+
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2rem 0; }
+
+img { max-width: 100%; height: auto; }
+
+.muted { color: var(--muted); }
+
+/* Header / nav */
+.site-header { border-bottom: 1px solid var(--rule); }
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.site-name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--text);
+  text-decoration: none;
+}
+.site-header ul {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-header ul a { color: var(--muted); text-decoration: none; }
+.site-header ul a:hover,
+.site-header ul a[aria-current="page"] { color: var(--text); }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.site-footer .updated { margin: 0.75rem 0 0; }
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Home intro */
+.intro {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.intro img {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  flex: none;
+}
+.intro h1 { margin: 0 0 0.25rem; }
+.intro .tagline { margin: 0; color: var(--muted); }
+.intro .links { margin-top: 0.5rem; }
+
+.callout {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+}
+.callout p:last-child { margin-bottom: 0; }
+
+@media (max-width: 480px) {
+  .intro { flex-direction: column; align-items: flex-start; }
+}
+
+/* Publications and talks */
+.pubs, .talks, .plain-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pubs li, .talks li, .plain-list li { margin-bottom: 1rem; }
+.pubs .title { font-weight: 600; }
+.pubs .meta, .talks .meta, .plain-list .meta {
+  display: block;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.status {
+  font-size: 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0 0.5rem;
+  margin-left: 0.25rem;
+  white-space: nowrap;
+}
+
+/* Project cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+.card a {
+  display: block;
+  height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  color: var(--text);
+  text-decoration: none;
+}
+.card a:hover { border-color: var(--accent); }
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #fff;
+}
+.card .body { padding: 0.75rem; }
+.card h3 { margin: 0 0 0.25rem; font-size: 1.05rem; }
+.card p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+
+/* Hobby pages */
+.back { font-size: 0.95rem; margin-bottom: 1rem; }
+figure { margin: 1.5rem 0; text-align: center; }
+figure img { display: block; margin: 0 auto; }
+figcaption { color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem; }
+.narrow { max-width: 60%; }
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.grid-2 figure { margin: 0; }
+@media (max-width: 480px) {
+  .narrow { max-width: 100%; }
+}
+.text-center { text-align: center; }
+/* Image classes used by the older project pages. */
+.center, .centersmall, .centerlarge { display: block; margin: 1rem auto; }
+.center { width: 50%; }
+.centersmall { width: 25%; }
+.centerlarge { width: 80%; }
+@media (max-width: 480px) {
+  .center, .centersmall { width: 80%; }
+  .centerlarge { width: 100%; }
+}
+.math-display { text-align: center; overflow-x: auto; }

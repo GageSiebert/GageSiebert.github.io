@@ -4,3 +4,9 @@
   padding: 1cm 2cm; /* Add some space around the text */
 }
 
+
+/* Keep the drawing area white so the points stay visible in dark mode. */
+#svgContainer svg {
+  background: #fff;
+  max-width: 100%;
+}

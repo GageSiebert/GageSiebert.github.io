@@ -1,0 +1,6 @@
+{% assign pub = include.pub %}
+<li>
+  {% if pub.url %}<a class="title" href="{{ pub.url }}">{{ pub.title }}</a>{% else %}<span class="title">{{ pub.title }}</span>{% endif %}
+  {% if pub.status %}<span class="status">{{ pub.status }}</span>{% endif %}
+  <span class="meta">{{ pub.authors | replace: "Siebert, G.", "<strong>Siebert, G.</strong>" }}{% if pub.venue %} · <em>{{ pub.venue }}</em>{% endif %} · {{ pub.year }}</span>
+</li>

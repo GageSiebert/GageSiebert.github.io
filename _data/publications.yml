@@ -1,0 +1,76 @@
+# Newest first. `selected: true` puts a paper on the home page.
+# `status` is shown as a tag when present (e.g. "in preparation", "under review").
+
+- title: Using Semantics to Select Reference Machines
+  authors: Siebert, G., Walker, S.
+  year: 2026
+  status: in preparation
+  selected: true
+
+- title: Assembly Spaces as a Basis for Physical Complexity
+  authors: Siebert, G., Walker, S.
+  year: 2026
+  status: in preparation
+
+- title: "Assembly Spaces: Formal Definitions and Fast Methods for Approximating Assembly Indices"
+  authors: Siebert, G., Chowdhury, R., Slocombe, L., Walker, S.
+  year: 2026
+  venue: arXiv
+  url: https://arxiv.org/abs/2606.15499
+  selected: true
+
+- title: Practical Assembly Theory, Including Protocols, and a Python Toolkit
+  authors: Slocombe, L., Siebert, G., et al.
+  year: 2026
+  venue: Nature Protocols
+  status: under review
+  selected: true
+
+- title: A Firefly-inspired Model for Deciphering the Alien
+  authors: Brooks, C., Janin, E., Siebert, G., et al.
+  year: 2025
+  venue: arXiv
+  url: https://arxiv.org/abs/2511.06139
+
+- title: Rapid Exploration of the Assembly Chemical Space of Molecular Graphs
+  authors: Seet, I., Patarroyo, K. Y., Siebert, G., et al.
+  year: 2025
+  venue: Journal of Chemical Information and Modeling
+  url: https://doi.org/10.1021/acs.jcim.5c01964
+  selected: true
+
+- title: Single-Pulse Studies of Three Millisecond-Pulsars
+  authors: Palliyaguru, N. T., Perera, B. B. P., McLaughlin, M. A., Oslowski, S., Siebert, G.
+  year: 2023
+  venue: MNRAS
+  url: https://doi.org/10.1093/mnras/stad194
+
+- title: Modeling the Optical System of NASA's EXCLAIM Mission
+  authors: Siebert, G., et al.
+  year: 2022
+  venue: Proceedings of the Wisconsin Space Conference
+  url: https://doi.org/10.17307/wsc.v1i1.351
+
+- title: "Experiment for Cryogenic Large-Aperture Intensity Mapping: Instrument design"
+  authors: Switzer, E., et al.
+  year: 2021
+  venue: JATIS
+  url: https://doi.org/10.1117/1.JATIS.7.4.044004
+
+- title: "The Tianlai Dish Pathfinder Array: design, operation and performance of a prototype transit radio interferometer"
+  authors: Wu, F., et al.
+  year: 2021
+  venue: MNRAS
+  url: https://doi.org/10.1093/mnras/stab1802
+
+- title: Optical design of the EXperiment for Cryogenic Large-Aperture Intensity Mapping (EXCLAIM)
+  authors: Essinger-Hileman, T., Oxholm, T., Siebert, G., et al.
+  year: 2020
+  venue: SPIE
+  url: https://doi.org/10.1117/12.2576254
+
+- title: Overview and status of EXCLAIM, the experiment for cryogenic large-aperture intensity mapping
+  authors: Cataldo, G., et al.
+  year: 2020
+  venue: SPIE
+  url: https://doi.org/10.1117/12.2561069

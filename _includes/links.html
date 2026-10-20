@@ -1,0 +1,7 @@
+<ul class="links">
+  <li><a href="mailto:{{ site.author.email }}">Email</a></li>
+  <li><a href="{{ site.cv | relative_url }}">CV</a></li>
+  <li><a href="{{ site.author.scholar }}">Google Scholar</a></li>
+  <li><a href="{{ site.author.github }}">GitHub</a></li>
+  {% if site.author.linkedin != "" %}<li><a href="{{ site.author.linkedin }}">LinkedIn</a></li>{% endif %}
+</ul>

@@ -1,0 +1,46 @@
+---
+layout: default
+title: Research
+permalink: /research/
+description: Publications, talks and honors of Gage Siebert.
+---
+<h1>Research</h1>
+
+<p>
+  My PhD work, with Sara Walker at ASU, is on algorithmic complexity. Measures like Kolmogorov
+  complexity depend on a choice of <em>reference machine</em>, the language in which a
+  computation is described. I work on making that choice principled: formalizing interpretable,
+  substrate-specific languages of computation, developing assembly spaces as a basis for
+  physical complexity, and building software that makes these analyses usable. I've applied
+  these methods to identify and characterize hierarchical structure in biological systems.
+</p>
+<p>
+  Earlier, I worked on observational astrophysics and instrumentation: a search in LIGO data for
+  signatures of a physics without the continuum (testing the Born rule), NASA's EXCLAIM balloon telescope,
+  the Tianlai radio array and millisecond pulsars at Arecibo.
+</p>
+
+<h2>Publications</h2>
+<ul class="pubs">
+  {% for pub in site.data.publications %}{% include publication.html pub=pub %}{% endfor %}
+</ul>
+<p class="muted">Also on <a href="{{ site.author.scholar }}">Google Scholar</a>.</p>
+
+<h2>Talks</h2>
+<ul class="talks">
+  {% for talk in site.data.talks %}
+  <li>
+    {{ talk.title }}
+    <span class="meta">{{ talk.kind }} · {{ talk.venue }} · {{ talk.year }}</span>
+  </li>
+  {% endfor %}
+</ul>
+
+<h2>Selected honors</h2>
+<ul class="plain-list">
+  <li>NSF Graduate Research Fellowship <span class="meta">2022</span></li>
+  <li>Barry Goldwater Scholarship <span class="meta">2021</span></li>
+  <li>Astronaut Scholarship <span class="meta">2021 · one of 60 selected nationally</span></li>
+  <li>IPAM travel funding, Mathematics of Intelligences: Theory and Practice of Deep Learning <span class="meta">2024</span></li>
+</ul>
+<p class="muted">The full list is in my <a href="{{ site.cv | relative_url }}">CV</a>.</p>

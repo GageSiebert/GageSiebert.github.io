@@ -1,0 +1,32 @@
+title: Gage Siebert
+description: >-
+  PhD candidate at Arizona State University working on algorithmic complexity,
+  moving into AI safety research.
+url: https://gagesiebert.com
+baseurl: ""
+
+author:
+  name: Gage Siebert
+  email: gagesiebert@gmail.com
+  scholar: https://scholar.google.com/citations?user=VAMksoEAAAAJ&hl=en
+  github: https://github.com/GageSiebert
+  linkedin: ""            # e.g. https://www.linkedin.com/in/...; left blank, the link is hidden
+  # Shown on the home page when filled in, e.g. "May 2027". Left blank, the line is hidden.
+  available_from: ""
+  # One short line about what you're doing now, e.g. "Working through the ARENA curriculum."
+  # Left blank, the line is hidden.
+  currently: ""
+
+cv: /cv.pdf
+headshot: /images/GageFace.JPEG
+
+markdown: kramdown
+plugins:
+  - jekyll-redirect-from
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle

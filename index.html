@@ -1,89 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167337120-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'UA-167337120-1');
-    </script>
-      <!-- MathJax-->
-    <script type="text/javascript"
-      src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-      
-    <link href="css/personal.css" rel="stylesheet">  
-      
-		<!-- EDIT: title -->
-    <title>Gage Siebert</title>
-  
-  </head>
+---
+layout: default
+---
+<section class="intro">
+  <img src="{{ site.headshot | relative_url }}" alt="Photo of Gage Siebert">
+  <div>
+    <h1>Gage Siebert</h1>
+    <p class="tagline">PhD candidate, Arizona State University · algorithmic complexity → AI safety</p>
+    {% include links.html %}
+  </div>
+</section>
 
-  <body style="background-color:grey;">
-		<!-- TEMPLATE IMG SYNTAX <img src="images/0110.jpg" alt="0110.jpg" width="420" height="315"> -->
-    <!-- Pages to add: Sines, RandomIFSGenerator, Fiction -->
-    <h1> Gage Siebert </h1>
-    <p style="text-align:left;"> <a href="Bio.html"> About Me </a> </p>
-    <h2 style="text-align:center;"> <a href="Fractal_Gallery.html">Fractal Gallery</a> </h2>
-    <img src="images/FractalGallery/Title.png" alt="Fractal Gallery Title Image" class="centersmall">
-    <!-- <img src="images/FractalGallery/IFS_SwirlTile.jpg" alt="FG.jpg" width="652" height="512"> -->
-        
-    <br>
-    <br>
-    <br>
-      
-  <h2 style="text-align:center;">Pages</h2>
-          
-    <table style="width:80% ;margin-left:auto;margin-right:auto;">
-      <tr>
-        <th><p><a href=5DIFS.html >Fractal Generator</a></p></th>
-        <th><p><a href=files/The_Oracle_s_Fractals.pdf> Computation is Fractal</a></p></th>
-        <th><p><a href=ArchipelagoCosmology.html >Short Fiction</a></p></th> 
-      </tr>
-      <tr>
-        <td><img style="display:block;" width="100%" src="images/5DIFS_title.png" /></td>
-        <td><img style="display:block;" width="100%" src="images/50lbs_Turing_Note.jpg" /></td>
-        <td><img style="display:block;" width="100%" src="images/IslandWorld.png" /></td>
-      </tr>
-      <tr>
-        <th><p><a href=Fractal_Font.html >Fractal Font</a></p></th>
-        <th><p><a href="SinePicture.html">Mystery Pattern</a></p></th>
-        <th><p><a href="Astro_photos.html">Astrophotos</a></p></th> 
-      </tr>
-      <tr>
-        <td><img style="display:block;" width="100%" src="images/LOREM_IPSUM_word.jpg" /></td>
-        <td><img style="display:block;" width="100%" src="images/sine_title.png" /></td>
-        <td><img style="display:block;" width="100%" src="images/Moon_title.png" /></td>
-      </tr>
-      <tr>
-        <th><p><a href=OCDCyclicPerm.html >Cyclic Permutation Fractals</a></p></th>
-        <th><p><a href="Heat_Interpolation.html">Heat Interpolation</a></p></th>
-        <th><p><a href="Epidemic_Sim.html">Epidemic Simulation</a></p></th>
-      </tr>
-      <tr>
-        <td><img style="display:block;" width="100%" src="images/CP_0523250.png" /></td>
-        <td><img style="display:block;" width="100%" src="images/4EFICentered.gif" /></td>
-        <td><img style="display:block;" width="100%" src="images/EpidemicMapNoSD.gif" /></td>
-      </tr>
-      <tr>
-        <th><p></p></th>
-        <th><p><a href="OCD.html">Binary Fractals</a></p></th>
-        <th><p></p></th>
-      </tr>
-      <tr>
-        <td></td>
-        <td><img style="display:block;" width="100%" src="images/01.gif" /></td>
-        <td></td>
-      </tr>
-    </table>
-    
-    
-    
-      <p style="text-align:center;"> <a href="Bio.html"> About Me </a> </p>
-      <p style="text-align:center;"> Last Updated: 5/11/2025 </p>
-  </body>
-</html>
+<p>
+  I'm a PhD candidate in astrophysics at Arizona State University, working with
+  Sara Walker on algorithmic complexity. My thesis is about
+  the languages we use to describe computation: formalizing interpretable, substrate-specific
+  languages of computation, building software that makes complexity-theoretic analyses
+  practical, and using these tools to find hierarchical structure in biological systems.
+</p>
+<p>
+  After my PhD I want to work on AI safety, which I think is among the most important things
+  one can work on right now. The question my research keeps returning to (which description
+  of a computation makes its structure legible) is one I'd like to bring to understanding
+  learned systems.
+</p>
+<p>
+  Before ASU, I studied physics and math at UW–Madison, where I worked on radio cosmology,
+  millisecond pulsars, the optics of a NASA balloon telescope and the origin of life.
+</p>
+
+{% if site.author.available_from != "" or site.author.currently != "" %}
+<div class="callout">
+  {% if site.author.available_from != "" %}<p><strong>Available for AI safety roles from {{ site.author.available_from }}.</strong></p>{% endif %}
+  {% if site.author.currently != "" %}<p>Currently: {{ site.author.currently }}</p>{% endif %}
+</div>
+{% endif %}
+
+<h2>Selected papers</h2>
+<ul class="pubs">
+  {% assign selected = site.data.publications | where: "selected", true %}
+  {% for pub in selected %}{% include publication.html pub=pub %}{% endfor %}
+</ul>
+<p><a href="{{ '/research/' | relative_url }}">All publications, talks and honors →</a></p>
+
+<h2>Elsewhere</h2>
+<p>
+  I also like making fractals, taking astrophotos and writing the occasional short story; they're collected on
+  the <a href="{{ '/projects/' | relative_url }}">projects page</a>. A good place to start is
+  <a href="{{ '/files/The_Oracle_s_Fractals.pdf' | relative_url }}">The Oracle's Fractals</a>,
+  a short essay about a fractal in which every universal Turing machine contains all the others.
+</p>
